@@ -35,8 +35,8 @@ import pauseOutOgg from "../assets/sounds/pauseOut.ogg";
 // 사용할 모든 asset(image, sprite image, audio, font 등)을 load해 놓습니다.
 export default class LoadingScene extends Phaser.Scene {
   constructor() {
+    // super에 파라미터로 넘겨주는 string이 해당 scene의 identifier가 됩니다.
     super("bootGame");
-    // bootGame : 이 scene의 identifier
   }
 
   preload() {
@@ -154,7 +154,6 @@ export default class LoadingScene extends Phaser.Scene {
       frameRate: 1,
       repeat: 0,
     });
-
 
     // PLAYERS
     this.anims.create({
