@@ -12,7 +12,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.scale = 2;
     this.m_moving = false;
-    this.canBeAttacked = true;
+    this.m_canBeAttacked = true;
 
     // HP bar를 player의 멤버 변수로 추가해줍니다.
     this.m_hpBar = new HpBar(scene, this, 100);
@@ -22,7 +22,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   hitByMob(damage) {
-    if (!this.canBeAttacked) return;
+    if (!this.m_canBeAttacked) return;
 
     this.scene.m_hurtSound.play();
     this.getCooldown();
@@ -36,13 +36,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   getCooldown() {
-    this.canBeAttacked = false;
+    this.m_canBeAttacked = false;
     this.alpha = 0.5;
     this.scene.time.addEvent({
       delay: 1000,
       callback: () => {
         this.alpha = 1;
-        this.canBeAttacked = true;
+        this.m_canBeAttacked = true;
       },
       callbackScope: this,
       loop: false,
