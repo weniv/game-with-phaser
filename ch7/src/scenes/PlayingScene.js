@@ -50,17 +50,6 @@ export default class PlayingScene extends Phaser.Scene {
     addAttackEvent(this, "beam", 10, 1, 1000);
 
     // collisions
-    /**
-     * 어떤 오브젝트들이 충돌했을 때 동작을 발생시키려면 physics.add.overlap 함수를 사용합니다.
-     * @param object1 오버랩되는지 검사할 오브젝트 1
-     * @param object2 오버랩되는지 검사할 오브젝트 2
-     * @param collideCallback 오브젝트 1과 오브젝트 2가 충돌하면 실행될 콜백함수입니다.
-     * @param processCallback 두 오브젝트가 겹치는 경우 추가 검사를 수행할 수 있는 선택적 콜백 함수입니다. 이것이 설정되면 이 콜백이 true를 반환하는 경우에만 collideCallback이 호출됩니다.
-     * @param callbackContext 콜백 스코프입니다. (this를 사용하시면 됩니다.)
-     */
-
-    // Player와 mob이 부딪혔을 경우 player에 데미지 10을 줍니다.
-    // (Player.js에서 hitByMob 함수 확인)
     this.physics.add.overlap(
       this.m_player,
       this.m_mobs,
@@ -68,8 +57,6 @@ export default class PlayingScene extends Phaser.Scene {
       null,
       this
     );
-    // mob이 dynamic 공격에 부딪혓을 경우 mob에 해당 공격의 데미지만큼 데미지를 줍니다.
-    // (Mob.js에서 hitByDynamic 함수 확인)
     this.physics.add.overlap(
       this.m_weaponDynamic,
       this.m_mobs,
@@ -79,8 +66,6 @@ export default class PlayingScene extends Phaser.Scene {
       null,
       this
     );
-    // mob이 static 공격에 부딪혓을 경우 mob에 해당 공격의 데미지만큼 데미지를 줍니다.
-    // (Mob.js에서 hitByStatic 함수 확인)
     this.physics.add.overlap(
       this.m_weaponStatic,
       this.m_mobs,
