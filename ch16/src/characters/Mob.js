@@ -14,6 +14,9 @@ export default class Mob extends Phaser.Physics.Arcade.Sprite {
     this.setDepth(10);
     this.scale = 2;
     this.m_speed = 50;
+    if (texture === "lion") {
+      this.m_speed = 60;
+    }
     this.m_hp = initHp;
     this.m_dropRate = dropRate;
     this.m_canBeAttacked = true;
