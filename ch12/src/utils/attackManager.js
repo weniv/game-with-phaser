@@ -34,7 +34,7 @@ export function addAttackEvent(scene, attackType, damage, scale, repeatGap = 0) 
     // m_attackEvents에도 catnip 객체를 그대로 넣어주었습니다.
     case "catnip":
       const catnip = new Catnip(scene, [scene.m_player.x, scene.m_player.y + 20], damage, scale);
-      scene.m_attackEvents[attackType] = catnip;
+      scene.m_attackEvents[attackType] = { object: catnip, damage: damage };
       break;
   }
 }
@@ -77,7 +77,7 @@ function doAttackOneSet(scene, attackType, damage, scale) {
 export function removeAttack(scene, attackType) {
   // catnip의 경우 object를 제거합니다.
   if (attackType === "catnip") {
-    scene.m_attackEvents.catnip.destroy();
+    scene.m_attackEvents[attackType].object.destroy();
     return;
   }
 

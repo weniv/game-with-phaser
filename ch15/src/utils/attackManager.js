@@ -27,7 +27,7 @@ export function addAttackEvent(scene, attackType, damage, scale, repeatGap = 0) 
 
     case "catnip":
       const catnip = new Catnip(scene, [scene.m_player.x, scene.m_player.y + 20], damage, scale);
-      scene.m_attackEvents[attackType] = catnip;
+      scene.m_attackEvents[attackType] = { object: catnip, damage: damage };
       break;
   }
 }
@@ -67,7 +67,7 @@ export function removeAttack(scene, attackType) {
   if (!scene.m_attackEvents[attackType]) return;
 
   if (attackType === "catnip") {
-    scene.m_attackEvents.catnip.destroy();
+    scene.m_attackEvents[attackType].object.destroy();
     return;
   }
   scene.time.removeEvent(scene.m_attackEvents[attackType].timer);
